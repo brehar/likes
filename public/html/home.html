@@ -1,0 +1,34 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" ui-sref="home">Likes!</a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li ng-show="currentUser"><a ui-sref="post">Post Message</a></li>
+                <li ng-show="currentUser"><a ui-sref="logout">Logout</a></li>
+                <li ng-hide="currentUser"><a ui-sref="login">Login</a></li>
+                <li ng-hide="currentUser"><a ui-sref="register">Register</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="media" ng-repeat="message in messages">
+        <div class="media-left">
+            <button type="button" class="btn btn-info btn-sm" ng-click="likePost(message)">Like <span class="badge">{{ message.likes }}</span></button>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">Posted by {{ message.createdBy }} on {{ message.createdAt | date }}</h4>
+            <p>{{ message.message }}</p>
+        </div>
+    </div>
+</div>
